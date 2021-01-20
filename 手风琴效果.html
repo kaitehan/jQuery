@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .king {
+            width: 1000px;
+            height: 69px;
+            margin: 100px auto;
+            background-color: #ddd;
+        }
+
+        ul li {
+            position: relative;
+            display: inline-block;
+            width: 69px;
+            height: 69px;
+            /* border-right: #ccc; */
+            margin: 0 10px;
+        }
+        ul li.current .small{
+            display: none;
+        }
+        ul li.current .large{
+            display: block;
+        }
+        .small {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 69px;
+            height: 69px;
+            border-radius: 5px;
+            background-color: #333;
+            /* margin: 0 10px; */
+        }
+
+        .large {
+            display: none;
+            width: 224px;
+            height: 69px;
+            border-right: #ccc;
+            background-color: pink;
+        }
+
+        .current {
+            width: 224px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.king li').mouseenter(function () {
+                // 操作当前li元素
+                $(this).stop().animate({
+                    width: 224
+                }).find('.small').stop().fadeOut().siblings('.large').stop().fadeIn();
+                // 操作其他li元素
+                $(this).siblings('li').stop().animate({
+                    width: 69
+                }).find('.small').stop().fadeIn().siblings('.large').stop().fadeOut();
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="king">
+        <ul>
+            <li class="current">
+                <a href="#">
+                    <div class="small"></div>
+                    <div class="large"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="small"></div>
+                    <div class="large"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="small"></div>
+                    <div class="large"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="small"></div>
+                    <div class="large"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="small"></div>
+                    <div class="large"></div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="small"></div>
+                    <div class="large"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

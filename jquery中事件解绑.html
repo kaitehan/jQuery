@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        $(function(){
+            // 1.事件处理
+            $('div').on({
+                click :function(){
+                    console.log(11111);
+                },
+                mouseover : function(){
+                    console.log(22222);
+                }
+            });
+            $('ul').on('click','li',function(){
+                alert(111);
+            });
+            
+            // 2.事件解绑
+            // $('div').off();//解绑所有事件
+            $('div').off('click');//这个是解绑div上的click事件
+            $('ul').off('click','li');//解除ul上的事件委托
+
+            // 3.one()  只触发一次事件
+            $('p').one('click',function(){
+                alert(55555);
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+    <p>1111</p>
+</body>
+</html>

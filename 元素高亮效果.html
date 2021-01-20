@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #box {
+            width: 300px;
+        }
+        .child {
+            display: inline-block;
+            /* float: left; */
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.child').hover(function(){
+                $(this).siblings().stop().fadeTo(400,0.5);
+            },function(){
+                $(this).siblings().stop().fadeTo(400,1);
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+</html>

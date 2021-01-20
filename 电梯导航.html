@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body,html {
+            height: 5000px;
+        }
+        li {
+            list-style: none;
+        }
+        div {
+            width: 1200px;
+            height: 300px;
+            margin: 10px auto;
+            border: 5px solid pink;
+        }
+        .main {
+            height: 500px;
+            background-color: #ccc;
+            border:  none;
+        }
+        .recommend {
+            height: 150px;
+            background-color: #333;
+            border: none;
+        }
+        .slider {
+            position: absolute;
+            left: 0;
+            top: 600px;
+            width: 80px;
+            height: 240px;
+            border: 1px solid red;
+            border-bottom: none;
+        }
+        .slider li {
+            height: 30px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 30px;
+            border-bottom: 1px solid red;
+            cursor: pointer;
+        }
+        .slider li:hover {
+            background-color: pink;
+        }
+        .current {
+            color: #fff;
+            background-color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul>
+            <li>first</li>
+            <li>second</li>
+            <li>third</li>
+            <li>forth</li>
+            <li>fifth</li>
+            <li>sixth</li>
+            <li>seventh</li>
+            <li>eighth</li>
+        </ul>
+    </div>
+    <div class="main"></div>
+    <div class="recommend"></div>
+    <div class="first w">first</div>
+    <div class="second w">second</div>
+    <div class="third w">third</div>
+    <div class="forth w">forth</div>
+    <div class="fifth w">fifth</div>
+    <div class="sixth w">sixth</div>
+    <div class="seventh w">seventh</div>
+    <div class="eighth w">eighth</div>
+    <script>
+        $(function(){
+            // 节流阀 互斥锁 当点击li时，不需要执行页面滚动事件里给li 添加 current类
+            var flag =true;
+            var t = $('.slider').offset().top;
+            var height = t - $('.recommend').offset().top;
+            sliderToggle();
+            // 导航栏模式切换函数
+            function sliderToggle() {
+                if ($(document).scrollTop() >= $('.recommend').offset().top){
+                    $('.slider').css({
+                        position :'fixed',
+                        top : height
+                    });
+                }else{
+                    $('.slider').css({
+                        position :'absolute',
+                        top : t
+                    });
+                }
+            };
+            // 1.页面滚动
+            $(window).scroll(function(){
+                sliderToggle();
+                // 3.当页面滚动到当前模块时，导航栏选择对应的标签
+                if(flag){
+                    $('.w').each(function(i,ele){
+                    if($(document).scrollTop() >= $(ele).offset().top){
+                        $('.slider li').eq(i).addClass('current').siblings().removeClass('current');
+                    }
+                })
+                }
+            });
+            // 2.点击标签时跳转到对应的模块
+            $('.slider ul').on('click','li',function(){
+                // 关闭节流阀
+                flag = false
+                // 获取li的序列号
+                var index = $(this).index();
+                // console.log(index);
+                // 根据Li的序列号获取对应的模块的offsetTop
+                var current = $('.w').eq(index).offset().top;
+                // 将页面滚动到要去往模块的位置
+                $('html,body').animate({
+                    scrollTop:current
+                },400,function(){
+                    // 当页面滚动结束后打开节流阀
+                    flag = true;
+                });
+                // 显示当前选中样式
+                $(this).addClass('current').siblings().removeClass('current');
+            })
+        })
+    </script>
+</body>
+</html>

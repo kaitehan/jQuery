@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/todolist.js"></script>
+</head>
+<body>
+    <header>
+        <section>
+            <label for="title">添加toDo</label>
+            <input type="text" id="title" class="title" placeholder="添加toDo">
+        </section>
+    </header>
+    <section>
+        <h2>正在进行<span id="todocount"></span></h2>
+        <ol class="demo_box" id="todelist">
+        </ol>
+        <h2>已经完成<span id="donecount"></span></h2>
+        <ul id="donelist">
+        </ul>
+    </section>
+    <footer>
+        Copyright &copy;2020 todolist.com
+    </footer>
+</body>
+</html>

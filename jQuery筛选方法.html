@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src=""></script>
+</head>
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son">
+                儿子
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <p>p啊</p>
+        <div>
+            我是p
+        </div>
+    </div>
+    <script>
+        $(function(){
+            // 方法引用的时候都是带括号的
+            // 1.父  parent() 返回最近一级的父亲节点
+            console.log($('.son').parent());
+            // 2.子
+            // （1）亲儿子 children() 类似由于子代选择器
+            $('.nav').children('p').css('color','red');
+            // (2) 可以选里面所有的孩子 包括儿子和孙子 find()
+            $('.nav').find('p').css('color','pink');
+            // 3.兄
+        })
+    </script>
+</body>
+</html>

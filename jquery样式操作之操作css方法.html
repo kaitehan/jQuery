@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        // 操作CSS方法
+        $(function(){
+            // 1.参数只写属性名，则是返回属性值
+            console.log($('div').css('width'));
+            // 2.参数是 属性名，属性值，是设置一组样式，属性必须加引号，值如果是数字可以不用加引号
+            $('div').css('width',300);
+            // 3.参数可以使对象形式，方便设置多组样式。属性名和属性值用冒号隔开，属性可以不用加引号
+            $('div').css({'height':300,color:'#ccc'});
+        })
+    </script>
+</head>
+<body>
+    <div>66666</div>
+</body>
+</html>

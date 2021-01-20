@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul class="lis">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script >
+        $(function(){
+            // 1.单个事件绑定
+            $('div').click(function(){
+                $(this).css('backgroundColor','blue');
+            })
+            
+            // 2.事件处理on
+            $('div').on({
+                click:function(){
+                    $(this).css('backgroundColor','blue');
+                },
+                mouseenter: function(){
+                    $(this).css('backgroundColor','#fff');
+                },
+                mouseleave: function(){
+                    $(this).css('backgroundColor','purple')
+                }
+
+            });
+            // 多个事件执行同一个操作
+            $('div').on('mouseenter click',function(){
+                $(this).css('width',200);
+            })
+            // 3.事件委托
+
+            // jquery实现
+            $('.lis').on('click','li',function(){
+                $(this).css('backgroundColor','pink').siblings().css('backgroundColor','#fff');
+                // alert(11111);
+            });
+            
+            // 原生js实现
+            window.addEventListener('load',function(){
+                var lis = document.querySelector('.lis');
+                lis.addEventListener('click',function(e){
+                    var ev = ev || window.event;//ie兼容性
+                    var target = ev.target || ev.srcElement;//ie兼容性
+                    if(target.nodeName.toLowerCase() == 'li'){
+                        alert('1111');
+                    }
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>

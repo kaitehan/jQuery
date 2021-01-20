@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var targetObj = {
+                id: 1,
+                msg: {
+                    age: 18
+                }
+            };
+            var obj = {
+                id: 2,
+                sex: '女',
+                msg: {
+                    height: '168'
+                }
+            };
+            // $.extend([deep],target,Object,[objectN])  对象拷贝方法
+            // 1.deep 参数为true时进行 深拷贝，否则为浅拷贝； 默认为 false
+            // target 参数为赋值目标
+            // object :待拷贝的第一个对象的对象
+            // objectN：待拷贝的第N个对象的对象
+            // 浅拷贝 是把被拷贝的对象 复杂数据类型中的地址 拷贝给目标对象，修改目标对象 会影响 被拷贝的对象
+            // 深拷贝 ，前面加true,完全克隆（拷贝的对象，而不是地址），修改目标对象 不会影响 被拷贝的对象
+
+            // 深拷贝
+            $.extend(true, targetObj, obj) //不会覆盖targetObj里面原来的数据，而是将复杂数据类型完全复制一份给目标对象，并会将不同的属性合并在一起
+            console.log(targetObj);
+            // console.log(obj);
+
+            // 浅拷贝
+            // $.extend(targetObj, obj); //会覆盖targetObj 里面原来的数据
+            // 浅拷贝把原来对象里面的复杂数据类型地址拷贝给目标对象
+            // console.log(targetObj);
+
+
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

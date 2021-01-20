@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入jQuery库 -->
+    <script src="library/jquery.min.js"></script>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // jqurey的入口函数保证js代码在DOM元素加载完后执行
+       $(function(){
+           $('div').hide();
+           alert(111);
+       })
+    </script>
+    <div></div>
+    
+</body>
+</html>

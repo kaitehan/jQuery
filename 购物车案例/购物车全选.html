@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../library/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+        }
+        i {
+            font-style: normal;
+            font-weight: normal;
+        }
+        .cart_wrap {
+            width: 500px;
+            margin: 100px auto;
+        }
+        .cart_title {
+            width: 100%;
+            background-color: #ddd;
+        }
+        .cart_list {
+            width: 100%;
+            background-color: #fff;
+        }
+        .cart_item {
+            border-bottom: 1px solid #ccc;
+        }
+        .cart_item>div {
+            display: inline-block;
+        }
+        .cart_item .p_checkbox,.select_all .checkall {
+            width: 20px;
+            text-align: center;
+            border-right: 1px solid #ccc;
+        }
+        .p_num {
+            width: 100px;
+            height: 20px;
+            margin-left: 30px;
+        }
+        .quantity_form{
+            text-align: center;
+            line-height: 20px;
+            padding-top: 2px;
+        }
+        .p_num a {
+            float: left;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 16px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .p_num input {
+            float: left;
+            width: 30px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            outline: none;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-left: 0;
+            border-right: 0;
+        }
+        .p_price,.p_sum,.p_del {
+            width: 50px;
+            height: 20px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+        }
+        .cart_pay {
+            width: 100%;
+            font-size: 14px;
+            background-color: #ddd;
+        }
+        .select_all,.total_num,.total_price,.del_selected,.del_all {
+            display: inline-block;
+        }
+        .total_price,.total_num,.del_selected,.del_all {
+            margin: 0 10px;
+        }
+        .checked_bg {
+            background-color: pink;
+        }
+       
+    </style>
+    <script src="./cart.js"></script>
+</head>
+<body>
+    <div class="cart_wrap">
+        <!-- 商品标题栏 -->
+        <div class="cart_title">
+            <div class="select_all">
+                <input type="checkbox" name="" id="" class="checkall">
+            </div>
+        </div>
+        <!-- 购物车商品列表主体 -->
+        <div class="cart_list">
+            <div class="cart_item">
+                <div class="p_checkbox">
+                    <input type="checkbox" name="" id="" class="j_checkbox">
+                </div>
+                <div class="p_price">￥12.60</div>
+                <div class="p_num">
+                    <div class="quantity_form">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" class="num" value="1">
+                        <a href="javascript:;" class="plus">+</a>
+                    </div>
+                </div>
+                <div class="p_sum">￥12.60</div>
+                <div class="p_del"><a href="javascript:;" class="del_item">删除</a></a></div>
+            </div>
+            <div class="cart_item">
+                <div class="p_checkbox">
+                    <input type="checkbox" name="" id="" class="j_checkbox">
+                </div>
+                <div class="p_price">￥13.60</div>
+                <div class="p_num">
+                    <div class="quantity_form">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" class="num" value="1">
+                        <a href="javascript:;" class="plus">+</a>
+                    </div>
+                </div>
+                <div class="p_sum">￥13.60</div>
+                <div class="p_del"><a href="javascript:;" class="del_item">删除</a></a></div>
+            </div>
+            <div class="cart_item">
+                <div class="p_checkbox">
+                    <input type="checkbox" name="" id="" class="j_checkbox">
+                </div>
+                <div class="p_price">￥14.60</div>
+                <div class="p_num">
+                    <div class="quantity_form">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" class="num" value="1">
+                        <a href="javascript:;" class="plus">+</a>
+                    </div>
+                </div>
+                <div class="p_sum">￥14.60</div>
+                <div class="p_del"><a href="javascript:;" class="del_item">删除</a></a></div>
+            </div>
+        </div>
+        <!-- 购物车结算栏 -->
+        <div class="cart_pay">
+            <div class="select_all">
+                <input type="checkbox" name="" id="" class="checkall">
+            </div>
+            <div class="del_selected">
+                <a href="javascript:;" >删除选中的商品</a>
+            </div>
+            <div class="del_all">
+                <a href="javascript:;" >清空购物车</a>
+            </div>
+            <div class="total_num">
+                一共<i class="t_num">0</i>件商品
+            </div>
+            <div class="total_price">
+                总价￥<i class="t_price">0</i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

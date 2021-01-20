@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        .first,
+        .second {
+            width: 1200px;
+            margin: 0 auto;
+            /* background-color: pink; */
+        }
+
+        .first {
+            height: 300px;
+            background-color: blue;
+        }
+
+        .second {
+            height: 3000px;
+            background-color: pink;
+        }
+
+        .slide {
+            position: absolute;
+            top: 500px;
+            left: 50%;
+            width: 50px;
+            height: 150px;
+            margin-left: 600px;
+            background-color: #ccc;
+        }
+
+        .goback {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            font-size: 14px;
+            display: none;
+            color: #333;
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first"></div>
+    <div class="second"></div>
+    <div class="slide"><a class="goback" href="javascript:;">返回顶部</a></div>
+    <script>
+        $(function () {
+            // console.log($('div').scrollTop());
+            var t = $('.slide').offset().top;
+            var h = $('.slide').offset().top - $('.second').offset().top;
+            $(window).scroll(function () {
+                var height = $('.second').offset().top;
+                if ($(document).scrollTop() >= height) {
+                    $('.slide').css({
+                        position: 'fixed',
+                        top: h,
+                    });
+                    $('.goback').fadeIn();
+                } else {
+                    $('.slide').css({
+                        position: 'absolute',
+                        top: t,
+                    });
+                    $('.goback').fadeOut();
+                }
+            });
+            $('.goback').on('click', function () {
+
+                // 只有元素才能做动画
+
+                // $(document).animate({
+                //     scrollTop:0
+                // })   //如果是文档对象，动画就不起作用
+                $('body,html').stop().animate({
+                    scrollTop:0
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

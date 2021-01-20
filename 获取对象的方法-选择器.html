@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="library/jquery.min.js"></script>
+    <style>
+        .grandfather {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grandfather">
+        <p>222</p>
+        <div class="father">
+            <div class="son">
+                <p>111</p>
+            </div>
+        </div>
+    </div>
+    <ol>
+        <li>我是ol里的li</li>
+        <li>我是ol里的li</li>
+        <li>我是ol里的li</li>
+        <li class="item">我是ol里的li</li>
+        <li>我是ol里的li</li>
+        <li>我是ol里的li</li>
+        <li>我是ol里的li</li>
+        <li>我是ol里的li</li>
+    </ol>
+    <ul>
+        <li>我是ul里的li</li>
+        <li>我是ul里的li</li>
+        <li>我是ul里的li</li>
+        <li>我是ul里的li</li>
+        <li>我是ul里的li</li>
+        <li>我是ul里的li</li>
+    </ul>
+    <script>
+        $(function () {
+            // jquery中的选择器和css中的选择器基本相同
+            $('.grandfather').css('background-color', 'red');
+
+            // 1.父
+            // 父亲选择方法，返回离得最近的父亲元素
+            console.log($('.son').parent()); // div.father
+
+            // 2.子
+            //  children(‘选择器’)方法，返回亲代儿子结点  类似于子代选择器
+            console.log($('.grandfather').children('p')) // p{222}
+
+            //  find('选择器')方法，返回子孙结点   类似于子孙选择器
+            console.log($('.grandfather').find('p')); // p{222} p{111}
+
+            // 兄弟
+            // 3.兄弟元素siblings 除了的自身元素之外的所有亲兄弟元素
+            $('ol .item').siblings('li').css('color','red');
+            // nextAll() 查找当前元素之后的所有元素
+            $('ol .item').nextAll().css('background-color','#333')
+            // prevAll() 查找当前元素之后的所有元素
+            $('ol .item').prevAll().css('background-color','#ccc')
+
+            // 4.选择第N个元素
+            // 1）可以利用选择器的方式选择
+            $('ul li:eq(2)').css('color','red');
+            // 2)我们可以利用选择方法的方式选择  更推荐此方法 可以使用变量选择元素
+            var index =1;
+            $('ul li').eq(index).css('color','blue');
+
+            // 5.判断你是否有某个类名
+             console.log($('ol li:first').hasClass('item'));//false
+             console.log($('ol li').eq(3).hasClass('item'));//true
+
+        })
+    </script>
+</body>
+
+</html>

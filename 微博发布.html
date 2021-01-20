@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./library/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        .box {
+            width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            border: 1px solid #333;
+            padding-top: 20px;
+        }
+        .txt {
+            outline: none;
+        }
+        ul {
+            width: 500px;
+            margin: 10px 150px;
+        }
+        ul li {
+            position: relative;
+            display: none;
+            width: 500px;
+            height: 24px;
+            font-size: 14px;
+            text-align: left;
+            line-height: 24px;
+            padding: 0 16px;
+            border-bottom: 1px dotted #ccc;
+        }
+        ul li a {
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
+    </style>
+    <script>
+        $(function(){
+            // 1.点击发布按钮， 动态生成一个小li， 放入文本框的内容和删除按钮 ， 并且添加到ul中
+            // var l =document.createElement('li');
+            // l.innerHTML = '1111';
+            // console.log(l);
+            $('.btn').on('click',function(){
+                // 创建元素
+                var li = $('<li></li>');
+                //  放入文本框的内容和删除按钮 
+                li.html($('.txt').val() + '<a href="javascript:;">删除</a>');
+                // 添加到ul中
+                $('ul').prepend(li);
+                // 添加下拉动画
+                li.slideDown();
+                // 清空文本框内容
+                $('.txt').val('');
+            })
+
+            // 2.点击删除按钮 删除当前li
+            // $('ul a').click(function(){ //单个点击事件不能给动态生成的a添加事件
+            //     alert(111);
+            // })
+
+            // a的点击事件委托给ul
+            $('ul').on('click','a',function(){
+                // 点击删除按钮候将 li 上拉消失
+                $(this).parent().slideUp(function(){
+                    // 等元素消失动画结束候移除li
+                    $(this).remove();
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <a href=""></a>
+    <div class="box">
+        <span>微博发布</span>
+        <textarea name="" id="" cols="70" rows="10" class="txt"></textarea>
+        <button class="btn">发布</button>
+        <ul></ul>
+    </div>
+</body>
+</html>
